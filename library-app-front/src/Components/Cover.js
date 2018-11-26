@@ -11,10 +11,10 @@ class Cover extends React.Component {
          <p class="lead">We created this platform for everyone who wants to share their stories, inspire us and be a part of our community.</p>
          <h5><span>Sign in to share your work with us.</span></h5>
          <p class="lead">
-           <a href="/authors" class="btn btn-lg btn-secondary">Sign in</a>
+           <a href="/signin" class="btn btn-lg btn-secondary">Sign in</a>
            <br/>
            <br/>
-           <a href="/authors" class="btn btn-lg btn-secondary">Sign up</a>
+           <a href="/signup" class="btn btn-lg btn-secondary">Sign up</a>
          </p>
        </main>
        </div>
