@@ -4,14 +4,14 @@
 # Examples:
 #   
     User.create(
-        [{ name: 'User1', email: "validaddress1@gmail.com"},
-        { name: 'User1', email: "validaddress1@gmail.com"},
-        { name: 'User2', email: "validaddress2@gmail.com"},
-        { name: 'User3', email: "validaddress3@gmail.com"},
-        { name: 'User4', email: "validaddress4@gmail.com"},
-        { name: 'User5', email: "validaddress5@gmail.com"},
-        { name: 'User6', email: "validaddress6@gmail.com"},
-        { name: 'User7', email: "validaddress7@gmail.com"},])
+        [{ name: 'User1', email: "validaddress1@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User1', email: "validaddress1@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User2', email: "validaddress2@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User3', email: "validaddress3@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User4', email: "validaddress4@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User5', email: "validaddress5@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User6', email: "validaddress6@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},
+        { name: 'User7', email: "validaddress7@gmail.com", description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."},])
 
     Book.create([
         { title: 'Book1', description: "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.", user_id: 5},
