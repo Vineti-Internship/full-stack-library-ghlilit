@@ -1,6 +1,7 @@
 import React from 'react';
-import NavItem from '../NavItem.js';
-import SearchButton from '../SearchButton.js';
+import NavItem from '../Small/NavItem.js';
+import SearchButton from '../Small/SearchButton.js';
+
 
 class Header extends React.Component {
     render() {
