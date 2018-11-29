@@ -49,16 +49,12 @@ export default withAuth(
 
       return (
         <div>
-        <Header search = {false}/>
-         <br/>
-         <br/>
-         <br/>
-         <br/>
-         <br/>
-         <Cover />
-        <div className = "container text-center center-block">
-          {mainContent}
-        </div>
+          <Header search = {false}/>
+            <br/><br/><br/><br/>
+          <Cover />
+            <div className = "container text-center center-block">
+              {mainContent}
+            </div>
         </div> 
       );
     }

@@ -1,23 +1,57 @@
 import React from 'react';
 import MainItem from './MainItem.js';
+import Loading from './Loading.js';
+import axios from 'axios';
+
+
+const API = 'https://hn.algolia.com/api/v1/search?query=';
+const DEFAULT_QUERY = 'redux';
 
 class Table extends React.Component {
-    render() {
-  let gibberish = "Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.";
-    let introBody;
-    let introText;
-      if (this.props.author){
-        introBody = "Authors and their works";
-        introText = gibberish;
-      }
-      else{
-        introBody = "Browse by books";
-        introText = gibberish;
-      }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      isLoading: false,
+      error: null,
+    };
+  }
+
+  async componentDidMount() {
+    this.setState({ isLoading: true });
+
+    try {
+      const result = await axios.get(API + DEFAULT_QUERY);
+
+      this.setState({
+        data: result.data.hits,
+        isLoading: false
+      });
+    } catch (error) {
+      this.setState({
+        error,
+        isLoading: false
+      });
+    }
+  }
+
+    render() {
+      const {isLoading} = this.state;
+      console.log(this.state);
+
+       if (isLoading) {
+        return (
+       <div class="jumbotron text-center center-block">
+            <p1>Loading...</p1>
+      </div>
+          );
+       }
+  
       return (
         <div>
-        <div class="container">
+         {/* <div class="container">
        <div class="text-center row row-offcanvas row-offcanvas-right">
        <div class="jumbotron text-center center-block">
             <h1>{introBody}</h1>
@@ -34,7 +68,7 @@ class Table extends React.Component {
           <MainItem title = "Body" body = {gibberish}></MainItem>
           </div>
         </div>
-        </div> 
+        </div>   */}
         </div>
       );
       
