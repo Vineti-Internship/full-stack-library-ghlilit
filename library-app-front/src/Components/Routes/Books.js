@@ -1,9 +1,11 @@
 import React from 'react';
 import Header from '../Layout/Header.js';
-import Table from '../Small/Table.js';
+import BookTable from '../Small/Book_Table.js';
 
-const API = "http://localhost:4000"
-const route = "/books"
+const USERS = "http://localhost:4000/users"
+const BOOKS = "http://localhost:4000/books/"
+const myEmail = "validaddress4@gmail.com"
+
 class Books extends React.Component {
 
   constructor(props){
@@ -15,12 +17,33 @@ class Books extends React.Component {
     }
   }
 
-    render() {
 
+  async componentDidMount() {
+    this.setState({ isLoading: true });
+    //finds the authenticated user's id by his email
+    let json;
+    try {
+      let result = await fetch(USERS);
+      json = await result.json();
+    } catch (error) {
+      }
+      let user = json.users.filter(function(user){
+         return user.email === myEmail;
+      });
+      let user_id = (user[0].id);
+      let books = (user[0].books)
+      this.setState({
+        books,
+        user_id,
+      });
+  }
+
+    render() {
+      console.log(this.state.books);
       return (
         <div>
         <Header search = {true}/>
-        <Table />
+        <BookTable data = {this.state.books} isLoading ={this.state.isLoading}/>
         </div>
       );
       

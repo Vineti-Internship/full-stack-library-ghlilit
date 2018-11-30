@@ -1,8 +1,7 @@
 import React from 'react';
 import Header from '../Layout/Header.js';
 import Table from '../Small/Table.js';
-import axios from 'axios';
-const API = 'http://localhost:4000/users';
+const USERS = 'http://localhost:4000/users';
 
 class Authors extends React.Component {
   constructor(props) {
@@ -20,7 +19,7 @@ class Authors extends React.Component {
     this.setState({ isLoading: true });
     
     try {
-      const result = await fetch(API);
+      const result = await fetch(USERS);
 
       this.setState({
         users: await result.json(),

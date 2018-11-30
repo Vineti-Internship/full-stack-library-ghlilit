@@ -1,6 +1,5 @@
 import React from 'react';
 import MainItem from './MainItem.js';
-import Loading from './Loading.js';
 
 const introBody =  "Welcome to our library."
 const introText = "Here you can see our authors and learn more about them.";
@@ -8,7 +7,7 @@ class Table extends React.Component {
 
     render() {
       const {data, isLoading} = this.props;
-      if (isLoading || data.users == undefined) {
+      if (isLoading || data.users === undefined) {
           return (
             <div className="jumbotron text-center center-block">
                 <p>Loading...</p>
