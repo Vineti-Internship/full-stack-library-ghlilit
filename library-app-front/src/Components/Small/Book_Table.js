@@ -10,6 +10,7 @@ class BookTable extends React.Component {
         form: false,
         title: '',
         content: '',
+        book_id: null,
     };
     
     handleTitleChange = (event) => {
@@ -20,13 +21,33 @@ class BookTable extends React.Component {
         this.setState({content: event.target.value});
         }
 
-    addBook = () => {
+    makeForm = () => {
         this.setState({
             form: true,
         })
     }
+    editForm = (book_id) => {
+        this.setState({
+            form: true,
+            book_id,
+        })
+    }
 
     submit = () =>{
+            if(this.state.book_id !== null){
+                this.patchRequest();
+            }
+            else{
+                console.log(this.state);
+                this.postRequest();
+            }
+    }
+
+    patchRequest = () => {
+        
+    }
+
+    postRequest = () => {
         const {title, content} = this.state;
         const {user_id} = this.props;
         const data = {
@@ -40,17 +61,16 @@ class BookTable extends React.Component {
             },
             body:JSON.stringify(data),
             method: "POST"
-        }
-
+    }
         fetch(BOOKS, Param).then(res => res.json())
         .then(response => console.log('Success:', JSON.stringify(response)))
         .catch(error => console.error('Error:', error));
-
         this.setState({
             form: false,
+            title: '',
+            content: '',
             })
-
-            this.props.rerenderParent();
+        this.props.rerenderParent();
     }
 
     render() {
@@ -87,12 +107,12 @@ class BookTable extends React.Component {
                 <h1>{introBody}</h1>
                 <p>{introText}</p>
                     <br/>
-                <button className="btn btn-dark btn-lg" onClick ={this.addBook}>Add a book</button>
+                <button className="btn btn-dark btn-lg" onClick ={this.makeForm}>Add a book</button>
             </div>
             <div className="col-12 col-md-12 text-center row row-offcanvas row-offcanvas-right">
               <div className="row">
                   {data.map((book,index) =>
-                      <MainItem key ={book.title + index} title = {book.title} body = {book.description}></MainItem>
+                      <MainItem rerenderParent = {this.props.rerenderParent} editForm ={this.editForm} id = {book.id} buttons = {true} key ={book.title + index} title = {book.title} body = {book.description}></MainItem>
                   )}
               </div>
           </div>         

@@ -38,7 +38,7 @@ class Authors extends React.Component {
       return (
         <div>
         <Header search = {true}/>
-        <Table data = {this.state.users} isLoading ={this.state.isLoading}/>
+        <Table data = {this.state.users} isLoading ={this.state.isLoading} buttons ={false}/>
         </div>
       );
     }

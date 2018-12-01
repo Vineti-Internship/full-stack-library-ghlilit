@@ -48,11 +48,11 @@ class Books extends React.Component {
   }
 
     render() {
-      console.log(this.state.books);
+      const {books, isLoading, user_id} = this.state;
       return (
         <div>
         <Header search = {true}/>
-        <BookTable data = {this.state.books} isLoading ={this.state.isLoading} user_id = {this.state.user_id} rerenderParent = {this.rerender} />
+        <BookTable data = {books} isLoading ={isLoading} user_id = {user_id} rerenderParent = {this.rerender} />
         </div>
       );
       
