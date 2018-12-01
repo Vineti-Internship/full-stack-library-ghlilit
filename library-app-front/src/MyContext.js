@@ -6,10 +6,9 @@ export class MyProvider extends React.Component {
 
   constructor(){
     super();
-    const idToken = JSON.parse(localStorage.getItem('okta-token-storage'));
       this.state = {
         json: '',
-        myEmail: '',
+        myEmail: "validaddress4@gmail.com",
         fetch: async() =>{
           let json;
             try {
@@ -20,15 +19,9 @@ export class MyProvider extends React.Component {
               this.setState({
                 json,
               })
-            }
           }
-
-  if (idToken.idToken!==undefined){
-    this.setState({
-      myEmail: idToken.idToken.claims.email,
-    })
-  }
-  }
+        }
+      }
 componentDidMount = () => {
   this.state.fetch();
 }
