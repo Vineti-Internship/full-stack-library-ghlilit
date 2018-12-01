@@ -3,7 +3,6 @@ import Header from '../Layout/Header.js';
 import BookTable from '../Small/Book_Table.js';
 
 const USERS = "http://localhost:4000/users"
-const BOOKS = "http://localhost:4000/books/"
 const myEmail = "validaddress4@gmail.com"
 
 class Books extends React.Component {
@@ -14,13 +13,18 @@ class Books extends React.Component {
       books: [],
       isLoading: false,
       error: null,
+      rerender: false
     }
   }
 
+  rerender = () => {
+      this.fetchData();
+  }
 
-  async componentDidMount() {
+  fetchData = async() => {
     this.setState({ isLoading: true });
-    //finds the authenticated user's id by his email
+    //finds the authenticated user's books by his email
+    //very inefficient))
     let json;
     try {
       let result = await fetch(USERS);
@@ -35,7 +39,12 @@ class Books extends React.Component {
       this.setState({
         books,
         user_id,
+        isLoading: false,
       });
+  }
+  
+  async componentDidMount() {
+    this.fetchData();
   }
 
     render() {
@@ -43,7 +52,7 @@ class Books extends React.Component {
       return (
         <div>
         <Header search = {true}/>
-        <BookTable data = {this.state.books} isLoading ={this.state.isLoading}/>
+        <BookTable data = {this.state.books} isLoading ={this.state.isLoading} user_id = {this.state.user_id} rerenderParent = {this.rerender} />
         </div>
       );
       
