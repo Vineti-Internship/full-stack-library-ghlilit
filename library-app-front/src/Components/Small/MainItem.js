@@ -11,7 +11,7 @@ class MainItem extends React.Component {
   }
 
   handleEditClick = () => {
-    this.props.editForm(this.props.id);
+    this.props.editForm(this.props.id, this.props.title, this.props.body);
   }
 
     render() {
@@ -19,12 +19,12 @@ class MainItem extends React.Component {
       if (this.props.buttons){
         buttons =
          <p>
-          <a className="btn btn-secondary" onClick = {this.handleEditClick} role="button">Edit </a>
-          <a className="btn btn-danger"  onClick = {this.handleDeleteClick} role="button">Delete </a>
+          <button className="btn btn-secondary" onClick = {this.handleEditClick}>Edit </button>
+          <button className="btn btn-danger"  onClick = {this.handleDeleteClick}>Delete </button>
         </p>
       }
       else{
-        buttons = <p><a className="btn btn-secondary" href="/" role="button">View details &raquo;</a></p>
+        buttons = <p><button className="btn btn-secondary" >View details &raquo;</button></p>
       }
 
       return (

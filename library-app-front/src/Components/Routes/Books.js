@@ -7,15 +7,12 @@ const myEmail = "validaddress4@gmail.com"
 
 class Books extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
+state = {
       books: [],
       isLoading: false,
       error: null,
       rerender: false
     }
-  }
 
   rerender = () => {
       this.fetchData();
@@ -23,8 +20,6 @@ class Books extends React.Component {
 
   fetchData = async() => {
     this.setState({ isLoading: true });
-    //finds the authenticated user's books by his email
-    //very inefficient))
     let json;
     try {
       let result = await fetch(USERS);
@@ -51,7 +46,7 @@ class Books extends React.Component {
       const {books, isLoading, user_id} = this.state;
       return (
         <div>
-        <Header search = {true}/>
+        <Header search = {false}/>
         <BookTable data = {books} isLoading ={isLoading} user_id = {user_id} rerenderParent = {this.rerender} />
         </div>
       );

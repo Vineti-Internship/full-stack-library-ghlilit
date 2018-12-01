@@ -4,20 +4,15 @@ import Table from '../Small/Table.js';
 const USERS = 'http://localhost:4000/users';
 
 class Authors extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
+    state = {
       users: [],
       isLoading: false,
+      details: false,
       error: null,
     };
-  }
 
   async componentDidMount() {
-    
     this.setState({ isLoading: true });
-    
     try {
       const result = await fetch(USERS);
 
@@ -34,7 +29,11 @@ class Authors extends React.Component {
   }
 
     render() {
-
+      if(this.state.details){
+        return <div>
+          <Header search = {false}/>
+        </div>
+      }
       return (
         <div>
         <Header search = {true}/>

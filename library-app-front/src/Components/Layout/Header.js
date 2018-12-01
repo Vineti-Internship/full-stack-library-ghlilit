@@ -1,13 +1,11 @@
 import React from 'react';
 import NavItem from '../Small/NavItem.js';
 import SearchButton from '../Small/SearchButton.js';
-
-
-class Header extends React.Component {
-    render() {
-      return (
-
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  
+const Header = (props) => {
+    return (
+      <div>
+         <nav className="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <span className="navbar-brand">Library</span>
         
         <div className="collapse navbar-collapse" id="navbarsExampleDefault">
@@ -17,11 +15,11 @@ class Header extends React.Component {
             <NavItem text ="Authors" link = "/Authors"/>
             <NavItem text ="My books" link = "/Books"/>
             </ul>
-            {this.props.search && <SearchButton/>}
+            {props.search && <SearchButton/>}
         </div>
     </nav>
-      );
-    }
+      </div>
+    )
   }
   
   export default Header;

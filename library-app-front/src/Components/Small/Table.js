@@ -24,7 +24,7 @@ class Table extends React.Component {
           <div className="col-12 col-md-12 text-center row row-offcanvas row-offcanvas-right">
               <div className="row">
                   {data.users.map((user,index) =>
-                      <MainItem key ={user.name + index} title = {user.name} body = {user.description}></MainItem>
+                      <MainItem id = {user.id} details = {this.props.details} key ={user.name + index} title = {user.name} body = {user.description}></MainItem>
                   )}
               </div>
           </div>         
