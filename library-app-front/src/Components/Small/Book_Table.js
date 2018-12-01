@@ -13,11 +13,11 @@ class BookTable extends React.Component {
         book_id: null,
     };
     
-    handleTitleChange = (event) => {
+    handleTitleChange = event => {
         this.setState({title: event.target.value});
         }
 
-    handleContentChange = (event) => {
+    handleContentChange = event => {
         this.setState({content: event.target.value});
         }
 
@@ -35,11 +35,9 @@ class BookTable extends React.Component {
             content,
             book_id,
         })
-        console.log("I did it");
     }
 
-    submit = () =>{
-        console.log(this.state);
+    submit = () => {
             if(this.state.book_id !== null){
                 this.patchRequest();
             }
@@ -67,10 +65,10 @@ class BookTable extends React.Component {
         const Param = {
             headers:{
                 'Content-Type': 'application/json'
-            },
+                },
             body:JSON.stringify(data),
             method: method
-    }
+        }
         fetch(URL, Param).then(res => res.json())
         .then(response => console.log('Success:', JSON.stringify(response)))
         .catch(error => {

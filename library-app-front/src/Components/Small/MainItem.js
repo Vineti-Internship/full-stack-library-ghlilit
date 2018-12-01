@@ -14,7 +14,7 @@ class MainItem extends React.Component {
     this.props.editForm(this.props.id, this.props.title, this.props.body);
   }
 
-  handleDetails = () =>{ 
+  handleDetails = () => { 
     this.props.details(this.props.id);
   }
 

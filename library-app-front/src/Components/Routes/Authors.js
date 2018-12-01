@@ -7,21 +7,18 @@ class Authors extends React.Component {
     state = {
       users: [],
       isLoading: false,
-      error: null,
     };
 
   async componentDidMount() {
     this.setState({ isLoading: true });
     try {
       const result = await fetch(USERS);
-
       this.setState({
         users: await result.json(),
         isLoading: false
       });
     } catch (error) {
       this.setState({
-        error,
         isLoading: false
       });
     }

@@ -3,48 +3,39 @@ import Header from '../Layout/Header.js';
 import BookTable from '../Small/Book_Table.js';
 import {MyContext} from '../../MyContext'
 
-const USERS = "http://localhost:4000/users"
-const myEmail = "validaddress4@gmail.com"
-
-
 class Books extends React.Component {
 
-state = {
-      books: [],
-      isLoading: false,
-      error: null,
-      rerender: false,
+  state = {
+        books: [],
+        isLoading: false,
+        error: null,
+        rerender: false,
     }
 
   rerender = () => {
-      this.fetchData();
-  }
+    this.context.state.fetch();
+    setTimeout(() => {this.fetchData()},500);
+    }
 
-  fetchData = async() => {
-    const {myEmail} = this.context.state;
+  fetchData = () => {
+    const {myEmail, json} = this.context.state;
     this.setState({
        isLoading: true,
-        });
-    let json;
-    try {
-      let result = await fetch(USERS);
-      json = await result.json();
-    } catch (error) {
-      }
-      let user = json.users.filter(function(user){
-         return user.email === myEmail;
       });
-      let user_id = (user[0].id);
-      let books = (user[0].books)
-      this.setState({
-        books,
-        user_id,
-        isLoading: false,
+
+    let user = json.users.filter(function(user){
+      return user.email === myEmail;
+      });
+
+    this.setState({
+      books: user[0].books,
+      user_id: user[0].id,
+      isLoading: false,
       });
   }
   
   async componentDidMount() {
-    this.fetchData();
+    setTimeout(() => {this.fetchData()},100);
   }
 
     render() {
@@ -55,12 +46,10 @@ state = {
         <BookTable data = {books} isLoading ={isLoading} user_id = {user_id} rerenderParent = {this.rerender} />
         </div>
       );
-      
     }
   }
 
-Books.contextType = MyContext;
-  
+Books.contextType = MyContext;  
 export default Books;
 
 

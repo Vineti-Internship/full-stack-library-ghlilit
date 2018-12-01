@@ -11,11 +11,10 @@ class Table extends React.Component {
         author: []
     }
 
-    details = (author_id) => {
+    details = author_id => {
         const author = this.context.state.json.users.filter(function(user){
             return user.id === author_id;
          });
-         console.log(author);
          this.setState({
             details: true,
             author,
@@ -60,5 +59,6 @@ class Table extends React.Component {
       );
     }
   }
+
   Table.contextType = MyContext;
   export default Table;
