@@ -7,7 +7,6 @@ class Authors extends React.Component {
     state = {
       users: [],
       isLoading: false,
-      details: false,
       error: null,
     };
 
@@ -29,15 +28,10 @@ class Authors extends React.Component {
   }
 
     render() {
-      if(this.state.details){
-        return <div>
-          <Header search = {false}/>
-        </div>
-      }
       return (
         <div>
         <Header search = {true}/>
-        <Table data = {this.state.users} isLoading ={this.state.isLoading} buttons ={false}/>
+        <Table data = {this.state.users} isLoading ={this.state.isLoading} buttons ={false} />
         </div>
       );
     }

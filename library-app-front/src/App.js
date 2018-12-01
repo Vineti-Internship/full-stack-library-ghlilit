@@ -5,6 +5,7 @@ import Home from './Components/Routes/Home.js';
 import Authors from './Components/Routes/Authors.js';
 import Books from './Components/Routes/Books.js';
 import Login from './Components/Auth/Login.js';
+import {MyProvider} from './MyContext'
 
 
 function onAuthRequired({ history }) {
@@ -21,11 +22,13 @@ class App extends React.Component {
                     onAuthRequired={onAuthRequired} 
                     >
           <div>         
+            <MyProvider>
             <Route path ="/" component={Home} exact/>
             <Route path ="/authors" component={Authors}/>
             <SecureRoute path ="/books"  component={Books}/>
             <Route path='/login' render={() => <Login baseUrl='https://dev-312840.oktapreview.com' />} />
             <Route path='/implicit/callback' component={ImplicitCallback} />
+            </MyProvider>
           </div>
         </Security>
      </BrowserRouter>

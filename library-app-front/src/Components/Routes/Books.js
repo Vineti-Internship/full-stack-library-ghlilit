@@ -1,9 +1,11 @@
 import React from 'react';
 import Header from '../Layout/Header.js';
 import BookTable from '../Small/Book_Table.js';
+import {MyContext} from '../../MyContext'
 
 const USERS = "http://localhost:4000/users"
 const myEmail = "validaddress4@gmail.com"
+
 
 class Books extends React.Component {
 
@@ -11,7 +13,7 @@ state = {
       books: [],
       isLoading: false,
       error: null,
-      rerender: false
+      rerender: false,
     }
 
   rerender = () => {
@@ -19,7 +21,10 @@ state = {
   }
 
   fetchData = async() => {
-    this.setState({ isLoading: true });
+    const {myEmail} = this.context.state;
+    this.setState({
+       isLoading: true,
+        });
     let json;
     try {
       let result = await fetch(USERS);
@@ -45,7 +50,7 @@ state = {
     render() {
       const {books, isLoading, user_id} = this.state;
       return (
-        <div>
+        <div>  
         <Header search = {false}/>
         <BookTable data = {books} isLoading ={isLoading} user_id = {user_id} rerenderParent = {this.rerender} />
         </div>
@@ -53,8 +58,10 @@ state = {
       
     }
   }
+
+Books.contextType = MyContext;
   
-  export default Books;
+export default Books;
 
 
 

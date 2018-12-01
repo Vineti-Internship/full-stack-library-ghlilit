@@ -14,6 +14,10 @@ class MainItem extends React.Component {
     this.props.editForm(this.props.id, this.props.title, this.props.body);
   }
 
+  handleDetails = () =>{ 
+    this.props.details(this.props.id);
+  }
+
     render() {
       let buttons;
       if (this.props.buttons){
@@ -24,7 +28,7 @@ class MainItem extends React.Component {
         </p>
       }
       else{
-        buttons = <p><button className="btn btn-secondary" >View details &raquo;</button></p>
+        buttons = <p><button className="btn btn-secondary" onClick = {this.handleDetails}>  View details &raquo;</button></p>
       }
 
       return (
